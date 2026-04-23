@@ -1,34 +1,66 @@
 @import "tailwindcss";
 
-:root {
-  --background: rgb(20, 152, 181);
-  --foreground: rgb(23, 23, 23);
-}
+@theme {
+  --color-bg: #141414;
+  --color-bg-2: #1a1a1a;
+  --color-bg-3: #202020;
+  --color-border: #262626;
+  --color-border-strong: #333333;
+  --color-text: #ededed;
+  --color-text-muted: #a8a8a8;
+  --color-text-dim: #707070;
+  --color-text-faint: #4a4a4a;
+  --color-accent: #d4d4d4;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-geist);
+  --font-serif: var(--font-instrument);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: rgb(10, 10, 10);
-    --foreground: rgb(237, 237, 237);
-  }
+html {
+  scroll-behavior: smooth;
+  background: var(--color-bg);
 }
 
 body {
-  margin: 0 auto;
-  padding: 0px 100px 0px; 
-  min-height: 100vh;
-  flex-direction: column;
-  max-width: 900px;
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.content-wrapper {
-  flex: 1;
+.page-gradient {
+  background: linear-gradient(
+    180deg,
+    #141414 0%,
+    #181818 40%,
+    #1c1c1c 70%,
+    #202020 100%
+  );
+}
+
+::selection {
+  background: #333333;
+  color: #ffffff;
+}
+
+@keyframes pulse-ring {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.15;
+  }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2.5s ease-in-out infinite;
+}
+
+/* removes tap highlight on mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
 }

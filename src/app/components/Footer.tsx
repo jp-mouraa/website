@@ -1,10 +1,11 @@
 export default function Footer() {
   return (
-    <footer className="mt-16">
-      <div className="w-4/5 border-t border-gray-600 mx-auto mb-4"></div>
-      <p className="text-center text-gray-500 text-sm pb-4">
-        © {new Date().getFullYear()} Jp Moura
-      </p>
+    <footer className="border-t border-[#262626] px-6 py-8">
+      <div className="max-w-5xl mx-auto text-center">
+        <p className="text-[12px] text-[#707070] font-mono">
+          © {new Date().getFullYear()}
+        </p>
+      </div>
     </footer>
   )
 }

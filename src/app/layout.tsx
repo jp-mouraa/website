@@ -1,26 +1,53 @@
 import './globals.css'
+import type { Metadata } from 'next'
+import { Geist, Geist_Mono, Instrument_Serif } from 'next/font/google'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import { Geist, Roboto } from 'next/font/google'
-import type { Metadata } from 'next'
 
-// Importing fonts from Google Fonts and roboto
-const geist = Geist({ subsets: ['latin'], variable: '--font-geist' })
-const roboto = Roboto({ weight: '400', subsets: ['latin'], variable: '--font-roboto' })
+const geist = Geist({
+  subsets: ['latin'],
+  variable: '--font-geist',
+  display: 'swap',
+})
+
+const geistMono = Geist_Mono({
+  subsets: ['latin'],
+  variable: '--font-geist-mono',
+  display: 'swap',
+})
+
+const instrumentSerif = Instrument_Serif({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-instrument',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
-  title: 'personal-portifolio',
-  description: 'Hi, my name is João Pedro de Moura. Welcome to my portfolio!'
+  title: 'João Pedro de Moura',
+  description:
+    'Student at PUCRS. BSc in Data Science and AI, MSc in Computer Science with a focus on Computer Vision.',
+  openGraph: {
+    title: 'João Pedro de Moura',
+    description:
+      'Student at PUCRS. BSc in Data Science and AI, MSc in Computer Science with a focus on Computer Vision.',
+    type: 'website',
+  },
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="pt-BR">
-      <body className={`${roboto.variable} ${geist.variable} bg-black text-white min-h-screen flex flex-col`}>
+    <html
+      lang="en"
+      className={`${geist.variable} ${geistMono.variable} ${instrumentSerif.variable}`}
+    >
+      <body className="page-gradient min-h-screen flex flex-col">
         <Navbar />
-        <main className="flex-1 px-6 py-10 max-w-4xl mx-auto">
-          {children}
-        </main>
+        <main className="flex-1">{children}</main>
         <Footer />
       </body>
     </html>

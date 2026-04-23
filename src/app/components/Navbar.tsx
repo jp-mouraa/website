@@ -1,30 +1,95 @@
-import Link from "next/link"
+'use client'
+
+import { useEffect, useState } from 'react'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
+import { SiKaggle, SiHuggingface } from 'react-icons/si'
+
+const sections = [
+  { id: 'home', label: 'HOME' },
+  { id: 'about', label: 'ABOUT' },
+  { id: 'research', label: 'RESEARCH' },
+  { id: 'work', label: 'WORK' },
+  { id: 'contact', label: 'CONTACT' },
+]
+
+const socials = [
+  {
+    href: 'https://github.com/jp-mouraa',
+    label: 'GitHub',
+    Icon: FaGithub,
+  },
+  {
+    href: 'https://www.linkedin.com/in/jo%C3%A3o-pedro-de-moura-medeiros-aaab05202/',
+    label: 'LinkedIn',
+    Icon: FaLinkedin,
+  },
+  {
+    href: 'https://www.kaggle.com/joopedrodemoura',
+    label: 'Kaggle',
+    Icon: SiKaggle,
+  },
+  {
+    href: 'https://huggingface.co/jpmoura',
+    label: 'Hugging Face',
+    Icon: SiHuggingface,
+  },
+]
 
 export default function Navbar() {
-  const links = [
-    { href: '/', label: 'Home' },
-    { href: '/about', label: 'About' },
-    { href: '/projects', label: 'Projects' }
-  ];
+  const [active, setActive] = useState<string>('home')
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActive(entry.target.id)
+          }
+        })
+      },
+      { rootMargin: '-40% 0px -55% 0px' }
+    )
+
+    sections.forEach(({ id }) => {
+      const el = document.getElementById(id)
+      if (el) observer.observe(el)
+    })
+
+    return () => observer.disconnect()
+  }, [])
 
   return (
-    <nav className="w-full mb-2 border-0 block bg-[#111] px-8 py-4 flex justify-between items-center shadow-md">
-      <div className="flex items-center space-x-4 font-medium">
-        {links.map((link, index) => (
-          <span key={link.href} className="relative text-[#f1f1f1]">
-            <Link href={link.href}>{link.label}</Link>
-            {index < links.length - 1 && <span className="ml-4 text-[#555]">|</span>}
-          </span>
-        ))}
-      </div>
-      <div className="flex items-center">
-        <a href="https://github.com/jp-mouraa" target="_blank" rel="noopener noreferrer">
-          <FaGithub className="text-[#f1f1f1] text-[30px] ml-6 hover:text-purple-500 hover:scale-125 transition-transform duration-1000" />
-        </a>
-        <a href="https://www.linkedin.com/in/jo%C3%A3o-pedro-de-moura-medeiros-aaab05202/" target="_blank" rel="noopener noreferrer">
-          <FaLinkedin className="text-[#f1f1f1] text-[30px] ml-6 hover:text-[#1e90ff] hover:scale-125 transition-transform duration-1000" />
-        </a>
+    <nav className="sticky top-0 z-50 backdrop-blur-md bg-[#141414]/70 border-b border-[#262626]">
+      <div className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div className="hidden sm:flex items-center gap-7 text-[13px]">
+          {sections.map(({ id, label }) => (
+            <a
+              key={id}
+              href={`#${id}`}
+              className={`transition-colors ${
+                active === id
+                  ? 'text-[#ededed]'
+                  : 'text-[#707070] hover:text-[#a8a8a8]'
+              }`}
+            >
+              {label}
+            </a>
+          ))}
+        </div>
+
+        <div className="flex items-center gap-4">
+          {socials.map(({ href, label, Icon }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+            >
+              <Icon className="text-[#a8a8a8] text-[17px] hover:text-white transition-colors" />
+            </a>
+          ))}
+        </div>
       </div>
     </nav>
   )
