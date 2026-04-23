@@ -27,10 +27,12 @@ export const metadata: Metadata = {
   title: 'João Pedro de Moura',
   description:
     'Student at PUCRS. BSc in Data Science and AI, MSc in Computer Science with a focus on Computer Vision.',
+  metadataBase: new URL('https://jp-moura.vercel.app'),
   openGraph: {
     title: 'João Pedro de Moura',
     description:
       'Student at PUCRS. BSc in Data Science and AI, MSc in Computer Science with a focus on Computer Vision.',
+    url: 'https://jp-moura.vercel.app',
     type: 'website',
   },
 }
