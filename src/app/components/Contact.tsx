@@ -64,18 +64,22 @@ export default function Contact() {
 
         <FadeIn delay={0.2}>
           <p className="text-[16px] text-[#a8a8a8] mb-10 max-w-md mx-auto leading-relaxed">
-            Open to collaborations, interesting problems, and good
-            conversations. Drop me a line.
+            Open to collaborations, hard problems, and the kind of
+            conversations that don&apos;t fit in a thread. The inbox is
+            quiet — yours won&apos;t get lost.
           </p>
         </FadeIn>
 
         <FadeIn delay={0.3}>
           <button
             onClick={handleCopy}
-            className="group inline-flex items-center gap-3 px-6 py-3 rounded-full border border-[#333333] hover:border-[#4a4a4a] text-[14px] text-[#ededed] transition-all hover:bg-[#1a1a1a] cursor-pointer"
+            className="group relative inline-flex items-center gap-3 px-6 py-3 rounded-full border border-[#333333] hover:border-[#525252] text-[14px] text-[#ededed] transition-all hover:bg-[#1a1a1a] cursor-pointer overflow-hidden"
           >
-            <span className="font-mono">{copied ? 'copied!' : EMAIL}</span>
-            <span className="text-[#707070] group-hover:text-[#a8a8a8] transition-colors">
+            <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-[#262626] to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+            <span className="relative font-mono">
+              {copied ? 'copied to clipboard' : EMAIL}
+            </span>
+            <span className="relative text-[#707070] group-hover:text-[#a8a8a8] transition-colors">
               {copied ? '✓' : '⧉'}
             </span>
           </button>

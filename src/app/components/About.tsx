@@ -34,18 +34,20 @@ export default function About() {
         </FadeIn>
 
         <FadeIn delay={0.1}>
-          <h2 className="font-serif text-[clamp(32px,5vw,40px)] leading-[1.15] tracking-tight text-white mb-10 max-w-2xl">
-            I like to create ML algorithms and play Arc Raiders
+          <h2 className="font-serif text-[clamp(32px,5vw,42px)] leading-[1.15] tracking-tight text-white mb-10 max-w-2xl">
+            ML algorithms by day, Arc Raiders by night.
           </h2>
         </FadeIn>
 
         <div className="space-y-10 text-[16px] text-[#a8a8a8] leading-[1.8] max-w-2xl">
           <FadeIn delay={0.2}>
             <p>
-              I&apos;m a Computer Science researcher focused on computer
-              vision and applied machine learning, currently pursuing a
-              Master&apos;s degree. I build end-to-end AI systems — from
-              research to production.
+              I&apos;m a Computer Science researcher working at the
+              intersection of computer vision and applied machine learning,
+              currently pursuing a Master&apos;s degree at PUCRS. I care
+              about systems that ship — the kind that go from a notebook,
+              past a paper, all the way to an endpoint someone actually
+              calls.
             </p>
           </FadeIn>
 

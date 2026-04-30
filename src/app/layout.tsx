@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Geist, Geist_Mono, Instrument_Serif } from 'next/font/google'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import CornerPortal from './components/CornerPortal'
 
 const geist = Geist({
   subsets: ['latin'],
@@ -51,6 +52,7 @@ export default function RootLayout({
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
+        <CornerPortal />
       </body>
     </html>
   )
